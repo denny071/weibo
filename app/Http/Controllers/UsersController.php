@@ -16,6 +16,12 @@ class UsersController extends Controller
         ]);
     }
 
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view("users.index", compact('users'));
+    }
+
 
     public function create()
     {
@@ -71,4 +77,11 @@ class UsersController extends Controller
         return redirect()->route('users.show', $user->id);
      }
 
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        session()->flash('success', '成功删除用户！');
+        return back();
+    }
 }
