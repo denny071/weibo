@@ -35,3 +35,4 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 
 
+Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
