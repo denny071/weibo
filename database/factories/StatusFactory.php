@@ -2,6 +2,9 @@
 
 use Faker\Generator as Faker;
 
+/**
+ * 微博模型工厂
+ */
 $factory->define(App\Models\Status::class, function (Faker $faker) {
     $date_time = $faker->date . ' ' . $faker->time;
     return [

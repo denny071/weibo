@@ -5,31 +5,49 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * 状态管理
+ *
+ * Class SessionsController
+ * @package App\Http\Controllers
+ */
 class SessionsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest', [
-            'only' => ['create']
-        ]);
+        //游客中间件
         $this->middleware('guest', [
             'only' => ['create']
         ]);
     }
 
+    /**
+     * 登录页
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('sessions.create');
     }
 
+    /**
+     * 登录认证
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request)
     {
+        //验证字段
         $credentials = $this->validate($request, [
             'email' => 'required|email|max:255',
             'password' => 'required'
         ]);
-
+        //验证账号
         if (Auth::attempt($credentials, $request->has('remember'))) {
+            //判断是否激活
             if (Auth::user()->activated) {
                 session()->flash('success', '欢迎回来！');
                 $fallback = route('users.show', Auth::user());
@@ -45,6 +63,11 @@ class SessionsController extends Controller
         }
     }
 
+    /**
+     * 注销用户
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function destroy()
     {
         Auth::logout();

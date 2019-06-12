@@ -2,6 +2,11 @@
 
 use Illuminate\Database\Seeder;
 
+/**
+ * 粉丝填充
+ *
+ * Class FollowersTableSeeder
+ */
 class FollowersTableSeeder extends Seeder
 {
     /**

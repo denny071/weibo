@@ -14,6 +14,9 @@ use Faker\Generator as Faker;
 |
 */
 
+/**
+ * 用户模型工厂
+ */
 $factory->define(App\Models\User::class, function (Faker $faker) {
     $date_time = $faker->date . ' ' . $faker->time;
     return [

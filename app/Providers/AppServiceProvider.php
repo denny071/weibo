@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //设置提示信息为中文
         Carbon::setLocale('zh');
     }
 }

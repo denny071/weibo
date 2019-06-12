@@ -3,7 +3,11 @@
 use Illuminate\Database\Seeder;
 use App\Models\Status;
 
-
+/**
+ * 微博填充
+ *
+ * Class StatusesTableSeeder
+ */
 class StatusesTableSeeder extends Seeder
 {
     /**

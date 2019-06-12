@@ -29,7 +29,7 @@
  一切，将从这里开始。
  </p>
  <p>
- <a class="btn btn-lg btn-success" href="{{ route('signup') }}" role="button">
+ <a class="btn btn-lg btn-success" href="{{ route('sign_up') }}" role="button">
             </p>
         </div>
     @endif
